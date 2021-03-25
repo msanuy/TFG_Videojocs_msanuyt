@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fps.Gameplay", "fps.Gameplay.csproj", "{7388cb9c-d90b-6a42-db96-9576f51aea1c}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fps.UI", "fps.UI.csproj", "{a5060098-08c1-522e-5231-cbb08210e9c8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fps.Game", "fps.Game.csproj", "{d4e2b48d-040f-13d6-8287-3c5199ffaa60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.FPS.Tutorials", "Unity.FPS.Tutorials.csproj", "{d8200f6f-818a-0d42-3334-69ff992ab273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponents", "NavMeshComponents.csproj", "{d6b5182a-3fe4-e63f-f0e3-719a4e60b065}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fps.AI", "fps.AI.csproj", "{df4a65ef-06c0-b0fe-0183-1d795a7e129b}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponentsEditor", "NavMeshComponentsEditor.csproj", "{f91068e7-c451-1104-caef-1b55921566d0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Microgame.Tutorials", "Unity.Microgame.Tutorials.csproj", "{b348a464-c804-3492-1e4a-3fa7cf4369b0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fps.Editor", "fps.Editor.csproj", "{334d9b39-bdf0-d479-7ddc-8def3fa6df10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7388cb9c-d90b-6a42-db96-9576f51aea1c}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7388cb9c-d90b-6a42-db96-9576f51aea1c}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{a5060098-08c1-522e-5231-cbb08210e9c8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{a5060098-08c1-522e-5231-cbb08210e9c8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{d4e2b48d-040f-13d6-8287-3c5199ffaa60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{d4e2b48d-040f-13d6-8287-3c5199ffaa60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{d8200f6f-818a-0d42-3334-69ff992ab273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{d8200f6f-818a-0d42-3334-69ff992ab273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{d6b5182a-3fe4-e63f-f0e3-719a4e60b065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{d6b5182a-3fe4-e63f-f0e3-719a4e60b065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{df4a65ef-06c0-b0fe-0183-1d795a7e129b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{df4a65ef-06c0-b0fe-0183-1d795a7e129b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{f91068e7-c451-1104-caef-1b55921566d0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{f91068e7-c451-1104-caef-1b55921566d0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{b348a464-c804-3492-1e4a-3fa7cf4369b0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{b348a464-c804-3492-1e4a-3fa7cf4369b0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334d9b39-bdf0-d479-7ddc-8def3fa6df10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334d9b39-bdf0-d479-7ddc-8def3fa6df10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
