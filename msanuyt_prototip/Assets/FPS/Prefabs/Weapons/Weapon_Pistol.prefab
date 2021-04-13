@@ -98,7 +98,7 @@ MonoBehaviour:
   AimZoomRatio: 1
   AimOffset: {x: 0, y: 0.1, z: 0}
   AutomaticReload: 1
-  HasPhysicalBullets: 0
+  HasPhysicalBullets: 1
   ClipSize: 9
   ShellCasing: {fileID: 0}
   EjectionPort: {fileID: 0}

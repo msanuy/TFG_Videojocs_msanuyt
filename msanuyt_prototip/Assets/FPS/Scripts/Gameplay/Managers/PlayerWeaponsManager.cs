@@ -92,11 +92,14 @@ namespace Unity.FPS.Gameplay
         float m_TimeStartedWeaponSwitch;
         WeaponSwitchState m_WeaponSwitchState;
         int m_WeaponSwitchNewWeaponIndex;
+        Ammo m_Ammo;
 
         void Start()
         {
             ActiveWeaponIndex = -1;
             m_WeaponSwitchState = WeaponSwitchState.Down;
+
+            m_Ammo = GetComponent<Ammo>();
 
             m_InputHandler = GetComponent<PlayerInputHandler>();
             DebugUtility.HandleErrorIfNullGetComponent<PlayerInputHandler, PlayerWeaponsManager>(m_InputHandler, this,
@@ -124,12 +127,15 @@ namespace Unity.FPS.Gameplay
             // shoot handling
             WeaponController activeWeapon = GetActiveWeapon();
 
-            if (activeWeapon != null && activeWeapon.IsReloading)
+            if (activeWeapon != null && activeWeapon.IsReloading){
+                activeWeapon.m_CurrentAmmo += m_Ammo.retrieveAmmo(activeWeapon.AmmoType, activeWeapon.ClipSize-activeWeapon.m_CurrentAmmo);
+                activeWeapon.Reload();
                 return;
+            }
 
             if (activeWeapon != null && m_WeaponSwitchState == WeaponSwitchState.Up)
             {
-                if (!activeWeapon.AutomaticReload && m_InputHandler.GetReloadButtonDown() && activeWeapon.CurrentAmmoRatio < 1.0f)
+                if (!activeWeapon.AutomaticReload && m_InputHandler.GetReloadButtonDown() && activeWeapon.CurrentAmmoRatio < 1.0f && m_Ammo.bulletsLeft(activeWeapon.AmmoType) > 0 && activeWeapon.m_CurrentAmmo < activeWeapon.ClipSize) 
                 {
                     IsAiming = false;
                     activeWeapon.StartReloadAnimation();
