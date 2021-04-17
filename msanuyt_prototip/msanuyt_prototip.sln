@@ -13,11 +13,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponents", "NavMes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fps.AI", "fps.AI.csproj", "{df4a65ef-06c0-b0fe-0183-1d795a7e129b}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{7e7be484-433c-6176-a721-fcc72537b61c}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponentsEditor", "NavMeshComponentsEditor.csproj", "{f91068e7-c451-1104-caef-1b55921566d0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Microgame.Tutorials", "Unity.Microgame.Tutorials.csproj", "{b348a464-c804-3492-1e4a-3fa7cf4369b0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fps.Editor", "fps.Editor.csproj", "{334d9b39-bdf0-d479-7ddc-8def3fa6df10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{1fb22934-b46f-5589-766b-11240f3c5a27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,12 +40,16 @@ Global
 		{d6b5182a-3fe4-e63f-f0e3-719a4e60b065}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{df4a65ef-06c0-b0fe-0183-1d795a7e129b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{df4a65ef-06c0-b0fe-0183-1d795a7e129b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7e7be484-433c-6176-a721-fcc72537b61c}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7e7be484-433c-6176-a721-fcc72537b61c}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{f91068e7-c451-1104-caef-1b55921566d0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{f91068e7-c451-1104-caef-1b55921566d0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{b348a464-c804-3492-1e4a-3fa7cf4369b0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{b348a464-c804-3492-1e4a-3fa7cf4369b0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{334d9b39-bdf0-d479-7ddc-8def3fa6df10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{334d9b39-bdf0-d479-7ddc-8def3fa6df10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1fb22934-b46f-5589-766b-11240f3c5a27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1fb22934-b46f-5589-766b-11240f3c5a27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

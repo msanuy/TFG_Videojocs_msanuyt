@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637521156080578120
-    m_Hash: 3856877152
+      ticks: 637539309727985614
+    m_Hash: 1714031827
   m_LockFileStatus:
     m_FilePath: C:/Users/M/msanuyt_prototip/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637521156189544352
-    m_Hash: 4123132595
+      ticks: 637539310230414352
+    m_Hash: 3513960906
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -163,6 +163,7 @@ m_PackageAssets:
         - 4.1.0
         - 4.1.1
         - 4.2.1
+        - 4.2.2
         compatible:
         - 1.0.0-preview
         - 1.0.1-preview
@@ -191,6 +192,7 @@ m_PackageAssets:
         - 4.1.0
         - 4.1.1
         - 4.2.1
+        - 4.2.2
         verified: 
       dependencies:
       - name: com.unity.editorcoroutines
@@ -668,6 +670,7 @@ m_PackageAssets:
         - 5.0.0-pre.7
         - 5.0.0-pre.10
         - 5.0.1
+        - 5.0.3
         compatible:
         - 4.0.2
         - 4.0.3
@@ -695,6 +698,7 @@ m_PackageAssets:
         - 5.0.0-pre.7
         - 5.0.0-pre.10
         - 5.0.1
+        - 5.0.3
         verified: 4.5.0
       dependencies:
       - name: com.unity.settings-manager
@@ -742,6 +746,83 @@ m_PackageAssets:
         type: git
         url: git+https://github.com/Unity-Technologies/com.unity.probuilder.git
         revision: c0048d825082c4ae352d19ea8bb13d5f63cbcde7
+        path: 
+    - packageId: com.unity.progrids@3.0.3-preview.6
+      testable: 0
+      isDirectDependency: 1
+      version: 3.0.3-preview.6
+      source: 1
+      resolvedPath: C:\Users\M\msanuyt_prototip\Library\PackageCache\com.unity.progrids@3.0.3-preview.6
+      assetPath: Packages/com.unity.progrids
+      name: com.unity.progrids
+      displayName: ProGrids
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: 'Advanced grid and object snapping for the scene view. ProGrids
+        is a dynamically placed grid, available on all 3 axes and at any position
+        in the scene.
+
+
+        ProGrids snaps objects in world space, ensuring consistent
+        placement of objects in your level.
+
+
+        In addition, ProGrids is completely
+        customizable. Change the colors of your grid, the snap sizing, unit of measurement,
+        and more!'
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 3.0.1-preview
+        - 3.0.2-preview
+        - 3.0.3-preview.0
+        - 3.0.3-preview.4
+        - 3.0.3-preview.5
+        - 3.0.3-preview.6
+        compatible:
+        - 3.0.1-preview
+        - 3.0.2-preview
+        - 3.0.3-preview.0
+        - 3.0.3-preview.4
+        - 3.0.3-preview.5
+        - 3.0.3-preview.6
+        verified: 
+      dependencies:
+      - name: com.unity.settings-manager
+        version: 1.0.2
+      resolvedDependencies:
+      - name: com.unity.settings-manager
+        version: 1.0.3
+      keywords:
+      - grid
+      - snap
+      - manipulation
+      - array
+      - align
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637209307060000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/com.unity.progrids.git
+        revision: 381f2b0b5dda11525d53e2c608284a3f68d1beff
         path: 
     - packageId: com.unity.test-framework@1.1.24
       testable: 0

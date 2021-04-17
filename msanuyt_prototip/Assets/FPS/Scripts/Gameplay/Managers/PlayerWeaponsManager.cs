@@ -135,7 +135,7 @@ namespace Unity.FPS.Gameplay
 
             if (activeWeapon != null && m_WeaponSwitchState == WeaponSwitchState.Up)
             {
-                if (!activeWeapon.AutomaticReload && m_InputHandler.GetReloadButtonDown() && activeWeapon.CurrentAmmoRatio < 1.0f && m_Ammo.bulletsLeft(activeWeapon.AmmoType) > 0 && activeWeapon.m_CurrentAmmo < activeWeapon.ClipSize) 
+                if (activeWeapon.AmmoType != WeaponAmmoType.Infi && m_InputHandler.GetReloadButtonDown() && activeWeapon.CurrentAmmoRatio < 1.0f && m_Ammo.bulletsLeft(activeWeapon.AmmoType) > 0 && activeWeapon.m_CurrentAmmo < activeWeapon.ClipSize) 
                 {
                     IsAiming = false;
                     activeWeapon.StartReloadAnimation();

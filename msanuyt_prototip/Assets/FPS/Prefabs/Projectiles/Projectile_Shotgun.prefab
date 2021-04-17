@@ -58,7 +58,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   Speed: 150
   GravityDownAcceleration: 20
-  TrajectoryCorrectionDistance: -1
+  TrajectoryCorrectionDistance: 5
   InheritWeaponVelocity: 0
   Damage: 12
   AreaOfDamage: {fileID: 0}

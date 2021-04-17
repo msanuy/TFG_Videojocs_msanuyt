@@ -9,7 +9,7 @@ namespace Unity.FPS.Game
     {
         Manual,
         Automatic,
-        Charge,
+        //Charge,
     }
 
     public enum WeaponAmmoType
@@ -91,8 +91,8 @@ namespace Unity.FPS.Game
         [Header("Ammo Parameters")]
         [Tooltip("The type of ammo used by the weapon")]
         public WeaponAmmoType AmmoType = WeaponAmmoType.Infi;
-        [Tooltip("Should the player manually reload")] //TO BE OBSOLETE?¿
-        public bool AutomaticReload = true;
+        /*[Tooltip("Should the player manually reload")] //TO BE OBSOLETE?¿
+        public bool AutomaticReload = true;*/
         [Tooltip("Has physical clip on the weapon and ammo shells are ejected when firing")]
         public bool HasPhysicalBullets = false;
         [Tooltip("Number of bullets in a clip")]
@@ -111,10 +111,10 @@ namespace Unity.FPS.Game
         [Tooltip("Delay after the last shot before starting to reload")]
         public float AmmoReloadDelay = 2f;
 
-        [Tooltip("Maximum amount of ammo in the gun")]
-        public int MaxAmmo = 8;
+        /*[Tooltip("Maximum amount of ammo in the gun")]
+        public int MaxAmmo = 8;*/
 
-        [Header("Charging parameters (charging weapons only)")]
+        /*[Header("Charging parameters (charging weapons only)")]
         [Tooltip("Trigger a shot when maximum charge is reached")]
         public bool AutomaticReleaseOnCharged;
 
@@ -125,7 +125,7 @@ namespace Unity.FPS.Game
         public float AmmoUsedOnStartCharge = 1f;
 
         [Tooltip("Additional ammo used when charge reaches its maximum")]
-        public float AmmoUsageRateWhileCharging = 1f;
+        public float AmmoUsageRateWhileCharging = 1f;*/
 
         [Header("Audio & Visual")] 
         [Tooltip("Optional weapon animator for OnShoot animations")]
@@ -156,7 +156,7 @@ namespace Unity.FPS.Game
         int m_CarriedPhysicalBullets;
         public int m_CurrentAmmo;
         float m_LastTimeShot = Mathf.NegativeInfinity;
-        public float LastChargeTriggerTimestamp { get; private set; }
+        //public float LastChargeTriggerTimestamp { get; private set; }
         Vector3 m_LastMuzzlePosition;
 
         public GameObject Owner { get; set; }
@@ -168,11 +168,7 @@ namespace Unity.FPS.Game
         public float CurrentCharge { get; private set; }
         public Vector3 MuzzleWorldVelocity { get; private set; }
 
-        public float GetAmmoNeededToShoot() =>
-            (ShootType != WeaponShootType.Charge ? 1f : Mathf.Max(1f, AmmoUsedOnStartCharge)) /
-            (MaxAmmo * BulletsPerShot);
-
-        public int GetCarriedPhysicalBullets() => m_CarriedPhysicalBullets;
+        public int GetCarriedPhysicalBullets() => m_CurrentAmmo;
 
         AudioSource m_ShootAudioSource;
 
@@ -215,7 +211,7 @@ namespace Unity.FPS.Game
             }
         }
 
-        public void AddCarriablePhysicalBullets(int count) => m_CarriedPhysicalBullets = Mathf.Max(m_CarriedPhysicalBullets + count, MaxAmmo);
+        public void AddCarriablePhysicalBullets(int count) => m_CarriedPhysicalBullets = m_CarriedPhysicalBullets + count;
 
         void ShootShell()
         {
@@ -248,7 +244,7 @@ namespace Unity.FPS.Game
         void Update()
         {
             UpdateAmmo();
-            UpdateCharge();
+            //UpdateCharge();
             UpdateContinuousShootSound();
 
             if (Time.deltaTime > 0)
@@ -260,32 +256,20 @@ namespace Unity.FPS.Game
 
         void UpdateAmmo()
         {
-            if (AutomaticReload && m_LastTimeShot + AmmoReloadDelay < Time.time && m_CurrentAmmo < MaxAmmo && !IsCharging)
+            if (AmmoType == WeaponAmmoType.Infi)
             {
                 // reloads weapon over time
                 m_CurrentAmmo += AmmoReloadRate * (int)Time.deltaTime;
 
                 // limits ammo to max value
-                m_CurrentAmmo = Mathf.Clamp(m_CurrentAmmo, 0, MaxAmmo);
+                m_CurrentAmmo = Mathf.Clamp(m_CurrentAmmo, 0, ClipSize);
 
                 IsCooling = true;
             }
-            else
-            {
-                IsCooling = false;
-            }
-
-            if (MaxAmmo == Mathf.Infinity)
-            {
-                CurrentAmmoRatio = 1f;
-            }
-            else
-            {
-                CurrentAmmoRatio = m_CurrentAmmo / MaxAmmo;
-            }
+            
         }
 
-        void UpdateCharge()
+        /*void UpdateCharge()
         {
             if (IsCharging)
             {
@@ -318,7 +302,7 @@ namespace Unity.FPS.Game
                     }
                 }
             }
-        }
+        }*/
 
         void UpdateContinuousShootSound()
         {
@@ -353,13 +337,13 @@ namespace Unity.FPS.Game
             IsWeaponActive = show;
         }
 
-        public void UseAmmo(float amount)
+        /*public void UseAmmo(float amount)
         {
             m_CurrentAmmo = (int)Mathf.Clamp((float)m_CurrentAmmo - amount, 0f, (float)MaxAmmo);
             m_CarriedPhysicalBullets -= Mathf.RoundToInt(amount);
             m_CarriedPhysicalBullets = Mathf.Clamp(m_CarriedPhysicalBullets, 0, MaxAmmo);
             m_LastTimeShot = Time.time;
-        }
+        }*/
 
         public bool HandleShootInputs(bool inputDown, bool inputHeld, bool inputUp)
         {
@@ -382,7 +366,7 @@ namespace Unity.FPS.Game
 
                     return false;
 
-                case WeaponShootType.Charge:
+                /*case WeaponShootType.Charge:
                     if (inputHeld)
                     {
                         TryBeginCharge();
@@ -394,7 +378,7 @@ namespace Unity.FPS.Game
                         return TryReleaseCharge();
                     }
 
-                    return false;
+                    return false;*/
 
                 default:
                     return false;
@@ -415,7 +399,7 @@ namespace Unity.FPS.Game
             return false;
         }
 
-        bool TryBeginCharge()
+        /*bool TryBeginCharge()
         {
             if (!IsCharging
                 && m_CurrentAmmo >= AmmoUsedOnStartCharge
@@ -431,9 +415,9 @@ namespace Unity.FPS.Game
             }
 
             return false;
-        }
+        }*/
 
-        bool TryReleaseCharge()
+        /*bool TryReleaseCharge()
         {
             if (IsCharging)
             {
@@ -446,13 +430,11 @@ namespace Unity.FPS.Game
             }
 
             return false;
-        }
+        }*/
 
         void HandleShoot()
         {
-            int bulletsPerShotFinal = ShootType == WeaponShootType.Charge
-                ? Mathf.CeilToInt(CurrentCharge * BulletsPerShot)
-                : BulletsPerShot;
+            int bulletsPerShotFinal = BulletsPerShot;
 
             // spawn all bullets with random direction
             for (int i = 0; i < bulletsPerShotFinal; i++)

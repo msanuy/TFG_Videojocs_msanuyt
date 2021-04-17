@@ -73,7 +73,7 @@ namespace Unity.FPS.UI
 
             WeaponIndexText.text = (WeaponCounterIndex + 1).ToString();
 
-            FillBarColorChange.Initialize(1f, m_Weapon.GetAmmoNeededToShoot());
+            //FillBarColorChange.Initialize(1f, m_Weapon.GetAmmoNeededToShoot());
         }
 
         void Update()
