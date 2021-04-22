@@ -93,6 +93,8 @@ namespace Unity.FPS.Game
         public WeaponAmmoType AmmoType = WeaponAmmoType.Infi;
         /*[Tooltip("Should the player manually reload")] //TO BE OBSOLETE?¿
         public bool AutomaticReload = true;*/
+        [Tooltip("The time it takes to reload the weapon")]
+        public float reloadTime;
         [Tooltip("Has physical clip on the weapon and ammo shells are ejected when firing")]
         public bool HasPhysicalBullets = false;
         [Tooltip("Number of bullets in a clip")]
@@ -106,7 +108,7 @@ namespace Unity.FPS.Game
         [Tooltip("Maximum number of shell that can be spawned before reuse")]
         [Range(1, 30)] public int ShellPoolSize = 1;
         [Tooltip("Amount of ammo reloaded per second")]
-        public int AmmoReloadRate = 1;
+        public int AmmoReloadRate = 999;
 
         [Tooltip("Delay after the last shot before starting to reload")]
         public float AmmoReloadDelay = 2f;
@@ -177,12 +179,14 @@ namespace Unity.FPS.Game
         const string k_AnimAttackParameter = "Attack";
 
         private Queue<Rigidbody> m_PhysicalAmmoPool;
+        private float m_reloadTimer;
 
         void Awake()
         {
             m_CurrentAmmo = ClipSize;
             m_CarriedPhysicalBullets = ClipSize;
             m_LastMuzzlePosition = WeaponMuzzle.position;
+            m_reloadTimer = 0f;
 
             m_ShootAudioSource = GetComponent<AudioSource>();
             DebugUtility.HandleErrorIfNullGetComponent<AudioSource, WeaponController>(m_ShootAudioSource, this,
@@ -229,6 +233,10 @@ namespace Unity.FPS.Game
 
         void PlaySFX(AudioClip sfx) => AudioUtility.CreateSFX(sfx, transform.position, AudioUtility.AudioGroups.WeaponShoot, 0.0f);
 
+        public int AmmoLeft(){
+            return m_CurrentAmmo;
+        }
+
 
         public void Reload()
         {
@@ -243,7 +251,15 @@ namespace Unity.FPS.Game
 
         void Update()
         {
-            UpdateAmmo();
+            //UpdateAmmo();
+            if (AmmoType == WeaponAmmoType.Infi && m_CurrentAmmo == 0){
+                if (m_reloadTimer == 0f){
+                    m_reloadTimer = Time.time;
+                } else if ((Time.time - reloadTime) >= m_reloadTimer){
+                    m_CurrentAmmo = ClipSize;
+                    m_reloadTimer = 0f;
+                }
+            }
             //UpdateCharge();
             UpdateContinuousShootSound();
 
@@ -254,7 +270,7 @@ namespace Unity.FPS.Game
             }
         }
 
-        void UpdateAmmo()
+        /*void UpdateAmmo()
         {
             if (AmmoType == WeaponAmmoType.Infi)
             {
@@ -267,7 +283,7 @@ namespace Unity.FPS.Game
                 IsCooling = true;
             }
             
-        }
+        }*/
 
         /*void UpdateCharge()
         {

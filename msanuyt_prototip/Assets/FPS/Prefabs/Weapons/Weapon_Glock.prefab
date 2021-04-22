@@ -223,6 +223,7 @@ MonoBehaviour:
   AimZoomRatio: 1
   AimOffset: {x: 0, y: 0.18, z: -0.22}
   AmmoType: 1
+  reloadTime: 2
   HasPhysicalBullets: 1
   ClipSize: 17
   ShellCasing: {fileID: 1301497169805764680, guid: fd758fa57339d814095bf6b5208c7d49,

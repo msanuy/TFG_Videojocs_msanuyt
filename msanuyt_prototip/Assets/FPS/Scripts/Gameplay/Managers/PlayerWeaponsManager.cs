@@ -94,12 +94,16 @@ namespace Unity.FPS.Gameplay
         int m_WeaponSwitchNewWeaponIndex;
         Ammo m_Ammo;
 
+        private float m_reloadTimer;
+
         void Start()
         {
             ActiveWeaponIndex = -1;
             m_WeaponSwitchState = WeaponSwitchState.Down;
 
             m_Ammo = GetComponent<Ammo>();
+
+            m_reloadTimer = 0f;
 
             m_InputHandler = GetComponent<PlayerInputHandler>();
             DebugUtility.HandleErrorIfNullGetComponent<PlayerInputHandler, PlayerWeaponsManager>(m_InputHandler, this,
@@ -128,8 +132,13 @@ namespace Unity.FPS.Gameplay
             WeaponController activeWeapon = GetActiveWeapon();
 
             if (activeWeapon != null && activeWeapon.IsReloading){
-                activeWeapon.m_CurrentAmmo += m_Ammo.retrieveAmmo(activeWeapon.AmmoType, activeWeapon.ClipSize-activeWeapon.m_CurrentAmmo);
-                activeWeapon.Reload();
+                if (m_reloadTimer == 0f){
+                    m_reloadTimer = Time.time;
+                } else if ((Time.time - activeWeapon.reloadTime) >= m_reloadTimer){
+                    activeWeapon.m_CurrentAmmo += m_Ammo.retrieveAmmo(activeWeapon.AmmoType, activeWeapon.ClipSize-activeWeapon.m_CurrentAmmo);
+                    activeWeapon.Reload();
+                    m_reloadTimer = 0f;
+                }
                 return;
             }
 

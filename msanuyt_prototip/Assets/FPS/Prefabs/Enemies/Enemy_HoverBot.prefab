@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 320366457759794871}
+  AniType: 0
   AttackStopDistanceRatio: 0.08
   RandomHitSparks:
   - {fileID: 9125706537325074547}
@@ -782,20 +783,15 @@ MonoBehaviour:
   RecoilForce: 1
   AimZoomRatio: 1
   AimOffset: {x: 0, y: 0, z: 0}
-  AutomaticReload: 1
+  AmmoType: 0
   HasPhysicalBullets: 0
   ClipSize: 30
   ShellCasing: {fileID: 0}
   EjectionPort: {fileID: 0}
   ShellCasingEjectionForce: 2
   ShellPoolSize: 1
-  AmmoReloadRate: 0.5
+  AmmoReloadRate: 0
   AmmoReloadDelay: 0.5
-  MaxAmmo: 100
-  AutomaticReleaseOnCharged: 0
-  MaxChargeDuration: 2
-  AmmoUsedOnStartCharge: 1
-  AmmoUsageRateWhileCharging: 2
   WeaponAnimator: {fileID: 0}
   MuzzleFlashPrefab: {fileID: 3930201484039205849}
   UnparentMuzzleFlash: 0
@@ -805,6 +801,7 @@ MonoBehaviour:
   ContinuousShootStartSfx: {fileID: 0}
   ContinuousShootLoopSfx: {fileID: 0}
   ContinuousShootEndSfx: {fileID: 0}
+  m_CurrentAmmo: 0
 --- !u!82 &2231955200838058728
 AudioSource:
   m_ObjectHideFlags: 0

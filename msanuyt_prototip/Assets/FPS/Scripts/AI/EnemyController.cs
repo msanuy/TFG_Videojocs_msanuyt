@@ -21,7 +21,7 @@ namespace Unity.FPS.AI
                 MaterialIndex = index;
             }
         }
-
+        
         [Header("Parameters")]
         [Tooltip("The Y height at which the enemy will be automatically killed (if it falls off of the level)")]
         public float SelfDestructYHeight = -20f;
@@ -415,7 +415,9 @@ namespace Unity.FPS.AI
                 return false;
 
             // Shoot the weapon
-            bool didFire = GetCurrentWeapon().HandleShootInputs(false, true, false);
+            //if (AmmoLeft() > 0)
+            bool didFire = false;
+            if (GetCurrentWeapon().AmmoLeft() > 0) didFire = GetCurrentWeapon().HandleShootInputs(false, true, false);
 
             if (didFire && onAttack != null)
             {
