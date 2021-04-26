@@ -44,6 +44,8 @@
      <Compile Include="Assets\FPS\Scripts\AI\PatrolPath.cs" />
      <Compile Include="Assets\FPS\Scripts\AI\DetectionModule.cs" />
      <Compile Include="Assets\FPS\Scripts\AI\EnemyController.cs" />
+     <Compile Include="Assets\FPS\Scripts\AI\SoldierMobile.cs" />
+     <Compile Include="Assets\FPS\Scripts\AI\SoldierController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Archivos de Programa/Unity/Editor/2020.3.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

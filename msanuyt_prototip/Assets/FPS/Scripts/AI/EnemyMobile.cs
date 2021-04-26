@@ -6,12 +6,6 @@ namespace Unity.FPS.AI
     [RequireComponent(typeof(EnemyController))]
     public class EnemyMobile : MonoBehaviour
     {
-
-        public enum AnimationType{
-            Robot,
-            Soldier,
-            Other,
-        }
         public enum AIState
         {
             Patrol,
@@ -20,9 +14,6 @@ namespace Unity.FPS.AI
         }
 
         public Animator Animator;
-
-        [Tooltip("Type of animation used")]
-        public AnimationType AniType = AnimationType.Robot;
 
         [Tooltip("Fraction of the enemy's attack range at which it will stop moving towards target while attacking")]
         [Range(0f, 1f)]

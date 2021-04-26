@@ -5,17 +5,21 @@ namespace Unity.FPS.Game
 {
     public class Health : MonoBehaviour
     {
-        [Tooltip("Maximum amount of health")] public float MaxHealth = 10f;
+        [Tooltip("Maximum amount of health")]
+        public float MaxHealth = 10f;
 
         [Tooltip("Health ratio at which the critical health vignette starts appearing")]
         public float CriticalHealthRatio = 0.3f;
+
+        [Tooltip("Can't take damage if true")]
+        public bool Invincible = false;
 
         public UnityAction<float, GameObject> OnDamaged;
         public UnityAction<float> OnHealed;
         public UnityAction OnDie;
 
         public float CurrentHealth { get; set; }
-        public bool Invincible { get; set; }
+        //public bool Invincible { get; set; }
         public bool CanPickup() => CurrentHealth < MaxHealth;
 
         public float GetRatio() => CurrentHealth / MaxHealth;
@@ -80,7 +84,8 @@ namespace Unity.FPS.Game
             if (CurrentHealth <= 0f)
             {
                 m_IsDead = true;
-                OnDie?.Invoke();
+                //OnDie?.Invoke();
+                OnDie.Invoke();
             }
         }
     }

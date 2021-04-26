@@ -341,7 +341,7 @@ namespace Unity.FPS.AI
         void OnDamaged(float damage, GameObject damageSource)
         {
             // test if the damage source is the player
-            if (damageSource && !damageSource.GetComponent<EnemyController>())
+            if (damageSource && !damageSource.GetComponent<EnemyController>() && !damageSource.GetComponent<SoldierController>())
             {
                 // pursue the player
                 DetectionModule.OnDamaged(damageSource);
