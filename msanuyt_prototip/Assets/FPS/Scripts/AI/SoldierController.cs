@@ -42,6 +42,9 @@ namespace Unity.FPS.AI
         [Tooltip("Time delay between a weapon swap and the next attack")]
         public float DelayAfterWeaponSwap = 0f;
 
+        [Tooltip("Speed at which the enemy adjusts its aim")]
+        public float AimSpeed = 0.5f;
+
 
 
         [Header("Sounds")] [Tooltip("Sound played when recieving damages")]
@@ -188,12 +191,11 @@ namespace Unity.FPS.AI
 
         public void OrientTowards(Vector3 lookPosition)
         {
-            Vector3 lookDirection = Vector3.ProjectOnPlane(lookPosition - transform.position, Vector3.up).normalized;
+            Vector3 lookDirection = Vector3.ProjectOnPlane(lookPosition - transform.position, Vector3.forward).normalized;
             if (lookDirection.sqrMagnitude != 0f)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                transform.rotation =
-                    Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * OrientationSpeed);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * AimSpeed);
             }
         }
 
@@ -332,9 +334,13 @@ namespace Unity.FPS.AI
         {
             for (int i = 0; i < m_Weapons.Length; i++)
             {
-                // orient weapon towards player
-                Vector3 weaponForward = (lookPosition - m_Weapons[i].WeaponRoot.transform.position).normalized;
-                m_Weapons[i].transform.forward = weaponForward;
+                // orient weapon muzzle towards player
+                Vector3 weaponForward = (lookPosition - m_Weapons[i].WeaponMuzzle.transform.position).normalized;
+                //m_Weapons[i].transform.forward = weaponForward;
+
+                Quaternion direction = Quaternion.LookRotation(weaponForward);
+                m_Weapons[i].WeaponMuzzle.transform.rotation = Quaternion.Slerp(m_Weapons[i].WeaponMuzzle.transform.rotation, direction, Time.deltaTime * 5f);
+
             }
         }
 
