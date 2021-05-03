@@ -2423,10 +2423,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SelfDestructYHeight: -20
   PathReachingRadius: 4.5
-  OrientationSpeed: 2.5
+  OrientationSpeed: 5
   DeathDuration: 2
   SwapToNextWeapon: 1
   DelayAfterWeaponSwap: 1
+  AimSpeed: 30
   DamageTick: {fileID: 0}
   DeathVfx: {fileID: 0}
   DeathVfxSpawnPoint: {fileID: 0}

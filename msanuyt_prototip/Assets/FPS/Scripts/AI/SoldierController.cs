@@ -191,11 +191,11 @@ namespace Unity.FPS.AI
 
         public void OrientTowards(Vector3 lookPosition)
         {
-            Vector3 lookDirection = Vector3.ProjectOnPlane(lookPosition - transform.position, Vector3.forward).normalized;
+            Vector3 lookDirection = Vector3.ProjectOnPlane(lookPosition - transform.position, Vector3.up).normalized;
             if (lookDirection.sqrMagnitude != 0f)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * AimSpeed);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * OrientationSpeed);
             }
         }
 
@@ -334,12 +334,21 @@ namespace Unity.FPS.AI
         {
             for (int i = 0; i < m_Weapons.Length; i++)
             {
+                /*Vector3 lookDirection = Vector3.ProjectOnPlane(lookPosition - transform.position, Vector3.forward).normalized;
+            if (lookDirection.sqrMagnitude != 0f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * OrientationSpeed);
+            }*/
+
+
                 // orient weapon muzzle towards player
-                Vector3 weaponForward = (lookPosition - m_Weapons[i].WeaponMuzzle.transform.position).normalized;
+                Vector3 weaponForward = Vector3.ProjectOnPlane(lookPosition - m_Weapons[i].WeaponMuzzle.transform.position, m_Weapons[i].WeaponMuzzle.transform.forward).normalized;
+                //Vector3 weaponForward = (lookPosition - m_Weapons[i].WeaponMuzzle.transform.position).normalized;
                 //m_Weapons[i].transform.forward = weaponForward;
 
                 Quaternion direction = Quaternion.LookRotation(weaponForward);
-                m_Weapons[i].WeaponMuzzle.transform.rotation = Quaternion.Slerp(m_Weapons[i].WeaponMuzzle.transform.rotation, direction, Time.deltaTime * 5f);
+                m_Weapons[i].WeaponMuzzle.transform.rotation = Quaternion.Slerp(m_Weapons[i].WeaponMuzzle.transform.rotation, direction, Time.deltaTime * AimSpeed);
 
             }
         }

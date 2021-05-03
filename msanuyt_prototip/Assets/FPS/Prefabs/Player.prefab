@@ -386,21 +386,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerCamera: {fileID: 8303093099919959869}
   AudioSource: {fileID: 1272397862697293493}
-  GravityDownForce: 30
+  GravityDownForce: 45
   GroundCheckLayers:
     serializedVersion: 2
     m_Bits: 1
   GroundCheckDistance: 1
-  MaxSpeedOnGround: 14
-  MovementSharpnessOnGround: 15
+  MaxSpeedOnGround: 15
+  MovementSharpnessOnGround: 16
   MaxSpeedCrouchedRatio: 0.5
-  MaxSpeedInAir: 12
+  MaxSpeedInAir: 20
   AccelerationSpeedInAir: 25
   SprintSpeedModifier: 1.5
   KillHeight: -30
   RotationSpeed: 200
   AimingRotationMultiplier: 0.4
-  JumpForce: 15
+  JumpForce: 16
   CameraHeightRatio: 0.8
   CapsuleHeightStanding: 1.8
   CapsuleHeightCrouching: 0.9

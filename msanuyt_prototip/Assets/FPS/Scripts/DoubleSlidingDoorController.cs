@@ -78,7 +78,7 @@ public class DoubleSlidingDoorController : MonoBehaviour {
 			}
 		}
 
-		if (other.GetComponent<Collider>().gameObject.layer == LayerMask.NameToLayer ("Characters")) {
+		if (other.GetComponent<Collider>().gameObject.layer == LayerMask.NameToLayer ("Default")) {
 			objectsOnDoorArea++;
 		}
 	}
@@ -89,7 +89,7 @@ public class DoubleSlidingDoorController : MonoBehaviour {
 
 	void OnTriggerExit(Collider other) {
 		//	Keep tracking of objects on the door
-		if (other.GetComponent<Collider>().gameObject.layer == LayerMask.NameToLayer ("Characters")) {
+		if (other.GetComponent<Collider>().gameObject.layer == LayerMask.NameToLayer ("Default")) {
 			objectsOnDoorArea--;
 		}
 	}
