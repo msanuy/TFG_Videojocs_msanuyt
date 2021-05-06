@@ -416,7 +416,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4577745017779688}
-  - component: {fileID: 114885376984799326}
   - component: {fileID: 3375558385504965938}
   - component: {fileID: -5013224522087738476}
   m_Layer: 0
@@ -441,36 +440,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114885376984799326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320737547762258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e28f1de024b520a439d243523f81b4c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_parts:
-    optical: {fileID: 1623543818270172}
-    pod: {fileID: 1296774429591120}
-    laser: {fileID: 1482305464528582}
-    butt_stock: {fileID: 1412789767704912}
-    magazine: {fileID: 1601805752396944}
-    sniper_barrel: {fileID: 1945770536690070}
-  m_configs:
-  - name: pump gun
-    optical: 0
-    pod: 0
-    laser: 0
-    butt_stock: 1
-    magazine: 0
-    sniper_barrel: 0
-    sniper_barrel_pos: 4
-  m_materials:
-  - {fileID: 2100000, guid: e0d685d5fd473ae4a9adb0f6b1c5a055, type: 2}
 --- !u!82 &3375558385504965938
 AudioSource:
   m_ObjectHideFlags: 0
@@ -592,7 +561,7 @@ MonoBehaviour:
   WeaponRoot: {fileID: 4554377744984145679}
   WeaponMuzzle: {fileID: 7968484036956221547}
   ShootType: 1
-  ProjectilePrefab: {fileID: 8924682559891268397, guid: c60b9bc405767b3409c7e35384206b82,
+  ProjectilePrefab: {fileID: 8924682559891268397, guid: 3d3a81ca17df0d442a835aa17e2ca2e4,
     type: 3}
   DelayBetweenShots: 0.2
   BulletSpreadAngle: 0.001
@@ -954,7 +923,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4386718275006658}
-  - component: {fileID: 114068535667948232}
   m_Layer: 0
   m_Name: Origine
   m_TagString: Untagged
@@ -988,73 +956,6 @@ Transform:
   m_Father: {fileID: 1560079942596624412}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114068535667948232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1610406709145192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e28f1de024b520a439d243523f81b4c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_parts:
-    optical: {fileID: 1623543818270172}
-    pod: {fileID: 1296774429591120}
-    laser: {fileID: 1482305464528582}
-    butt_stock: {fileID: 1412789767704912}
-    magazine: {fileID: 1601805752396944}
-    sniper_barrel: {fileID: 1945770536690070}
-  m_configs:
-  - name: snipper
-    optical: 1
-    pod: 1
-    laser: 1
-    butt_stock: 1
-    magazine: 1
-    sniper_barrel: 1
-    sniper_barrel_pos: 4
-  - name: assault
-    optical: 1
-    pod: 0
-    laser: 0
-    butt_stock: 1
-    magazine: 1
-    sniper_barrel: 1
-    sniper_barrel_pos: 2
-  - name: pump gun
-    optical: 0
-    pod: 0
-    laser: 0
-    butt_stock: 1
-    magazine: 0
-    sniper_barrel: 0
-    sniper_barrel_pos: 4
-  - name: gun
-    optical: 0
-    pod: 0
-    laser: 0
-    butt_stock: 0
-    magazine: 0
-    sniper_barrel: 0
-    sniper_barrel_pos: 4
-  - name: custom
-    optical: 1
-    pod: 0
-    laser: 1
-    butt_stock: 0
-    magazine: 1
-    sniper_barrel: 0
-    sniper_barrel_pos: 4
-  m_materials:
-  - {fileID: 2100000, guid: b49510b14bae4114b8069a5809b8eb8b, type: 2}
-  - {fileID: 2100000, guid: c583915a63226c948a763cff3567e454, type: 2}
-  - {fileID: 2100000, guid: 40f3d73942ceebe4fad47344ab9642f2, type: 2}
-  - {fileID: 2100000, guid: e0d685d5fd473ae4a9adb0f6b1c5a055, type: 2}
-  - {fileID: 2100000, guid: 65e1f136fcec19a42a635d622eaef5fe, type: 2}
-  - {fileID: 2100000, guid: 1d4328b25e5193f4eb3dccf41777f0e5, type: 2}
 --- !u!1 &1623543818270172
 GameObject:
   m_ObjectHideFlags: 0

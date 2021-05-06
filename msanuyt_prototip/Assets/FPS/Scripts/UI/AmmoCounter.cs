@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 namespace Unity.FPS.UI
 {
-    [RequireComponent(typeof(FillBarColorChange))]
     public class AmmoCounter : MonoBehaviour
     {
         [Tooltip("CanvasGroup to fade the ammo UI")]
@@ -14,17 +13,14 @@ namespace Unity.FPS.UI
 
         [Tooltip("Image for the weapon icon")] public Image WeaponImage;
 
-        [Tooltip("Image component for the background")]
-        public Image AmmoBackgroundImage;
-
-        [Tooltip("Image component to display fill ratio")]
-        public Image AmmoFillImage;
-
         [Tooltip("Text for Weapon index")] 
         public TextMeshProUGUI WeaponIndexText;
 
         [Tooltip("Text for Bullet Counter")] 
         public TextMeshProUGUI BulletCounter;
+
+        [Tooltip("Text for the total ammo Counter")]
+        public TextMeshProUGUI TotalAmmo;
 
         [Header("Selection")] [Range(0, 1)] [Tooltip("Opacity when weapon not selected")]
         public float UnselectedOpacity = 0.5f;
@@ -34,15 +30,10 @@ namespace Unity.FPS.UI
 
         [Tooltip("Root for the control keys")] public GameObject ControlKeysRoot;
 
-        [Header("Feedback")] [Tooltip("Component to animate the color when empty or full")]
-        public FillBarColorChange FillBarColorChange;
-
-        [Tooltip("Sharpness for the fill ratio movements")]
-        public float AmmoFillMovementSharpness = 20f;
-
         public int WeaponCounterIndex { get; set; }
 
         PlayerWeaponsManager m_PlayerWeaponsManager;
+        Ammo m_Ammo;
         WeaponController m_Weapon;
 
         void Awake()
@@ -54,7 +45,7 @@ namespace Unity.FPS.UI
         {
             if (evt.Weapon == m_Weapon)
             {
-                BulletCounter.text = m_Weapon.GetCarriedPhysicalBullets().ToString();
+                BulletCounter.text = m_Weapon.AmmoLeft().ToString();
             }
         }
 
@@ -63,10 +54,10 @@ namespace Unity.FPS.UI
             m_Weapon = weapon;
             WeaponCounterIndex = weaponIndex;
             WeaponImage.sprite = weapon.WeaponIcon;
-            if (!weapon.HasPhysicalBullets)
-                BulletCounter.transform.parent.gameObject.SetActive(false);
-            else
-                BulletCounter.text = weapon.GetCarriedPhysicalBullets().ToString();
+            BulletCounter.text = m_Weapon.AmmoLeft().ToString();
+
+            m_Ammo = FindObjectOfType<Ammo>();
+            TotalAmmo.text = m_Ammo.bulletsLeft(m_Weapon.AmmoType).ToString();
 
             m_PlayerWeaponsManager = FindObjectOfType<PlayerWeaponsManager>();
             DebugUtility.HandleErrorIfNullFindObject<PlayerWeaponsManager, AmmoCounter>(m_PlayerWeaponsManager, this);
@@ -78,11 +69,8 @@ namespace Unity.FPS.UI
 
         void Update()
         {
-            float currenFillRatio = m_Weapon.CurrentAmmoRatio;
-            AmmoFillImage.fillAmount = Mathf.Lerp(AmmoFillImage.fillAmount, currenFillRatio,
-                Time.deltaTime * AmmoFillMovementSharpness);
-
-            BulletCounter.text = m_Weapon.GetCarriedPhysicalBullets().ToString();
+            BulletCounter.text = m_Weapon.AmmoLeft().ToString();
+            TotalAmmo.text = m_Ammo.bulletsLeft(m_Weapon.AmmoType).ToString();
 
             bool isActiveWeapon = m_Weapon == m_PlayerWeaponsManager.GetActiveWeapon();
 
@@ -91,8 +79,6 @@ namespace Unity.FPS.UI
             transform.localScale = Vector3.Lerp(transform.localScale, isActiveWeapon ? Vector3.one : UnselectedScale,
                 Time.deltaTime * 10);
             ControlKeysRoot.SetActive(!isActiveWeapon);
-
-            FillBarColorChange.UpdateVisual(currenFillRatio);
         }
 
         void Destroy()

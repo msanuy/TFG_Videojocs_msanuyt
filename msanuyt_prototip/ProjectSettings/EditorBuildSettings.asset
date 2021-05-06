@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FPS/Scenes/LevelsMenu.unity
     guid: dd0a2b7adb64a1049807713f1ac75644
+  - enabled: 1
+    path: Assets/FPS/Scenes/Level_01.unity
+    guid: fc6c07d7aa2648a4e97b68a50de937f3
   m_configObjects: {}

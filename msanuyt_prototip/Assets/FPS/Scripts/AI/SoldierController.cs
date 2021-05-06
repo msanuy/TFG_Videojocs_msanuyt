@@ -62,6 +62,12 @@ namespace Unity.FPS.AI
         [Tooltip("The chance the object has to drop")] [Range(0, 1)]
         public float DropRate = 1f;
 
+        [Header("Loot")] [Tooltip("The other object this enemy can drop when dying")]
+        public GameObject secondaryLootPrefab;
+
+        [Tooltip("The chance the object has to drop")] [Range(0, 1)]
+        public float secondaryDropRate = 1f;
+
         [Header("Debug Display")] [Tooltip("Color of the sphere gizmo representing the path reaching range")]
         public Color PathReachingRangeColor = Color.yellow;
 
@@ -303,10 +309,8 @@ namespace Unity.FPS.AI
             //m_EnemyManager.UnregisterEnemy(this);
 
             // loot an object
-            if (TryDropItem())
-            {
-                Instantiate(LootPrefab, transform.position, Quaternion.identity);
-            }
+            if (LootPrefab != null && TryDropItem(DropRate)) Instantiate(LootPrefab, transform.position, Quaternion.identity);
+            if (secondaryLootPrefab != null && TryDropItem(secondaryDropRate)) Instantiate(secondaryLootPrefab, transform.position, Quaternion.identity);
 
             // this will call the OnDestroy function
             Destroy(gameObject, DeathDuration);
@@ -382,14 +386,11 @@ namespace Unity.FPS.AI
             return didFire;
         }
 
-        public bool TryDropItem()
+        public bool TryDropItem(float rate)
         {
-            if (DropRate == 0 || LootPrefab == null)
-                return false;
-            else if (DropRate == 1)
-                return true;
-            else
-                return (Random.value <= DropRate);
+            if (rate == 0) return false;
+            else if (rate == 1) return true;
+            else return (Random.value <= rate);
         }
 
         void FindAndInitializeAllWeapons()

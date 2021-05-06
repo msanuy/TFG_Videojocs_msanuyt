@@ -14,6 +14,12 @@ namespace Unity.FPS.Game
         [Tooltip("Can't take damage if true")]
         public bool Invincible = false;
 
+        [Tooltip("Others can drain HP")]
+        public bool steal = false;
+
+        [Tooltip("Health recovered from damaging others")][Range(0, 1)]
+        public float lifeSteal = 0f;
+
         public UnityAction<float, GameObject> OnDamaged;
         public UnityAction<float> OnHealed;
         public UnityAction OnDie;
@@ -60,6 +66,9 @@ namespace Unity.FPS.Game
             if (trueDamageAmount > 0f)
             {
                 OnDamaged?.Invoke(trueDamageAmount, damageSource);
+                if (damageSource.gameObject.GetComponent<Health>().lifeSteal != 0 && steal){
+                    damageSource.GetComponent<Health>().Heal(trueDamageAmount*damageSource.gameObject.GetComponent<Health>().lifeSteal);
+                }
             }
 
             HandleDeath();
